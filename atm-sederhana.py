@@ -86,16 +86,16 @@ elif(status_masuk == 'berhasil'):
             if confirm == 'y':
                 print('====================')
                 # Kalau saldo di ATM atau saldo di rekening tidak cukup
-                if(nominal > kartu[3] or nominal > saldo_atm): 
+                if(nominal > kartu[3]): 
                     print("Saldo tidak cukup")
                 else:
                     kartu[3] -= nominal     # kurangi jumlah saldo di rekening dengan jumlah uang yang ditransfer
-                    saldo_atm -= nominal    # kurangi jumlah saldo di atm dengan jumlah uang yang ditransfer
                     print("Transaksi Anda sudah berhasil")
                     print('Sisa saldo anda: Rp' + str(kartu[3]))
                 konfirmasi += 1 # biar selesai
             elif confirm == 'n':
                 konfirmasi += 1
+                # masuk ke layar menu
             else:
                 # biar ngulang jawabannya yang bener
                 print('Masukkan menu yang sesuai')
