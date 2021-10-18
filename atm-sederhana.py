@@ -18,8 +18,8 @@ Kamus:
 '''
 
 #Keterangan kartu sudah di pre-define lewat array di bawah ini
-#Format array: Nama, Nomor Rekening, PIN, Saldo Rekening
-kartu = ["Rick Sanchez", 61869, 123456, 1000000]
+#Format array: Nama, Nomor Rekening, PIN, Saldo Rekening, Punya Deposito atau Tidak, Dana Deposito
+kartu = ["Rick Sanchez", 61869, 123456, 1000000, False, 0]
 
 #Saldo di ATM
 #Untuk tarik uang
@@ -108,7 +108,101 @@ elif(status_masuk == 'berhasil'):
     #Fuction transfer rekening ends here
 
     #Function deposito starts here
+    def deposito():
+        if(kartu[4] == False):  # Apakah pengguna memiliki rekening deposito?
+            Punya_deposito = False  # Jika kartu[4] bernilai false, maka belum punya deposito
+        else:
+            Punya_deposito = True # Jika kartu[4] tidak bernilai false, maka sudah punya deposito
+        
+        # layar menu deposito
+        print("1.Pembukaan Rekening Deposito")
+        print("2.Informasi Deposito")
+        print("3.Pencairan Deposito")
+        print("4.Kembali")
+        Menu = int(input("Pilih menu: "))
+        if(Menu == 1): # Menu Pembukaan Rekening Deposito
+            if(Punya_deposito == False):  # Jika belum punya deposito, maka harus buka rekening deposito dahulu
+                print("Selamat Datang di Menu Pembukaan Rekening Deposito")
+                print("--------------------------------------------------")
+                print("")
+                print("Peraturan Deposito")
+                print("--------------------------------------------------")
+                print("1.Suku bunga sebesar 2% per bulan")
+                print("2.Nominal minimum deposito sebesar Rp1000000")
+                print("3.Jangka waktu deposito yaitu 1 bulan, 3 bulan, 6 bulan, 9 bulan, dan 12 bulan")
+                print("4.Biaya pajak penghasilan sebesar 30% dari nominal bunga")
+                print("5.Pencairan dana deposito tidak dapat dilakukan pada saat yang bersamaan dengan periode pembukaan rekening deposito")
+                print("")
+            
+                if(kartu[3] < 1000000): # Jika saldo rekening anda tidak mencukupi ketentuan minimum deposito, maka anda tidak dapat membuka rekening deposito
+                    print("Saldo rekening anda tidak cukup untuk membuka rekening deposito sesuai peraturan yang disebutkan.")
+                    print("", end='') # kembali ke menu awal
+                
+                Nomor_Rekening = int(input("Silakan masukkan nomor rekening Anda: ")) # Masukkan nomor rekening anda sebagai verifikasi bahwa pengguna adalah anda sendiri
+                while(Nomor_Rekening != kartu[1]):  # ika nomor rekening yang dimasukkan tidak sesuai dengan nomor rekening pengguna, maka masukkan ulang nomor rekening hingga sesuai
+                    print("Nomor rekening yang Anda masukkan salah.")
+                    Nomor_Rekening = int(input("Silakan masukkan nomor rekening Anda: "))
+                
+                Nominal_Deposito = int(input("Nominal Deposito (IDR):Rp")) # Masukkan nominal deposito yang diinginkan
+                while(Nominal_Deposito < 1000000 or Nominal_Deposito > kartu[3]):  # Jika nominal deposito kurang dari syarat minimum dari peraturan bank yang disebutkan sebelumnya atau saldo rekening tidak mencukupi nominal yang diinginkan, masukkan nominal deposito hingga sesuai dengan ketentuan yang disebutkan
+                    print("Nominal deposito tidak memenuhi ketentuan nominal minimum deposito atau saldo rekening tidak mencukupi nominal yang diinginkan.")
+                    Nominal_Deposito = int(input("Nominal Deposito (IDR):Rp"))
+                
+                global Jangka_Waktu # Membuat variabel global agar dapat digunakan di menu 2, yaitu Informasi Deposito
+                Jangka_Waktu = int(input("Jangka Waktu (bulan): "))  # Masukkan jangka waktu deposito yang diinginkan
+                while(Jangka_Waktu != 1 and Jangka_Waktu != 3 and Jangka_Waktu != 6 and Jangka_Waktu != 9 and Jangka_Waktu != 12):  # Jika jangka waktu tidak sesuai dengan peraturan deposito, masukkan ulang hingga sesuai peraturan
+                    print("Tidak ada pilihan jangka waktu tersebut.")
+                    Jangka_Waktu = int(input("Jangka Waktu (bulan): "))
 
+                PIN = int(input("Masukkan PIN Anda: ")) # Masukkan PIN rekening anda
+                while(PIN != kartu[2]):  # Jika PIN rekening anda tidak sesuai dengan yang sebenarnya, masukkan ulang PIN hingga sesuai
+                    print("PIN yang dimasukkan salah.")
+                    PIN = int(input("Masukkan PIN Anda: "))
+
+                kartu[3] = kartu[3] - Nominal_Deposito # Saldo rekening yang tersisa sama dengan saldo rekening awal dikurangi nominal deposito
+                kartu[5] = Nominal_Deposito # Saldo rekening deposito sama dengan nominal deposito 
+                
+                print("Pembukaan Rekening Deposito Berhasil!")
+                print("Informasi tentang deposito dapat dilihat pada menu Informasi Deposito.")
+                deposito() # kembali ke layar menu deposito
+            else: # Jika anda telah memiliki rekening deposito, maka tidak perlu membuka rekening deposito lagi
+                print("Anda sudah memiliki rekening deposito.")
+                deposito() # kembali ke layar menu deposito
+
+        if(Menu == 2): # Menu Informasi Deposito
+            if(Punya_deposito == True): # Jika anda telah memiliki rekening deposito, informasi deposito anda dapat dilihat di bawah ini
+                Nominal_Deposito = kartu[5]
+                Nomor_Rekening = kartu[1]
+                print("Informasi Deposito")
+                print("------------------")
+                print("")
+                print("Total Dana Deposito")
+                print("Rp"+str(Nominal_Deposito)) # Nominal deposito
+                print("------------------")
+                print("")
+                print("Nomor Rekening Dana Deposito: "+str(Nomor_Rekening)) # Nomor rekening
+                print("Nama: "+kartu[0]) # Nama pemilik rekening
+                print("Suku bunga: 2% per bulan")
+                print("Jangka waktu: "+str(Jangka_Waktu)+" bulan") # Jangka waktu deposito
+                Bunga = (1.02**Jangka_Waktu)*Nominal_Deposito - Nominal_Deposito # Bunga deposito
+                Pajak = 0.3*Bunga # Pajak deposito
+                Estimasi = int(Nominal_Deposito + Bunga - Pajak) # Estimasi hasil deposito
+                print("Estimasi Hasil Deposito: Rp"+str(Estimasi))
+                deposito() # kembali ke layar menu deposito
+            else: # Jika anda belum memiliki rekening deposito, maka buat rekening deposito terlebih dahulu
+                print("Silakan membuka rekening deposito terlebih dahulu.")
+                deposito() # kembali ke layar menu deposito
+
+        if(Menu == 3): # Menu pencairan dana deposito
+            if(Punya_deposito == True): # Jika anda telah memiliki rekening deposito, pada saat yang bersamaan dengan periode pembukaan rekening deposito, anda tidak dapat mencairkan dana deposito anda sesuai peraturan yang ditetapkan
+                print("Berdasarkan peraturan, Anda tidak dapat mencairkan deposito pada saat yang sama dengan periode pembukaan rekening deposito Anda.")
+                deposito() # kembali ke layar menu deposito
+            else: # Jika anda belum memiliki rekening deposito, maka buat rekening deposito terlebih dahulu
+                print("Silakan membuka rekening deposito terlebih dahulu.")
+                deposito() # kembali ke layar menu deposito
+
+        if(Menu == 4): # Menu untuk kembali ke menu ATM awal
+            print("", end='') # kembali ke menu ATM awal
     #Function deposito ends here
 
     #Function cek saldo starts here
