@@ -8,7 +8,7 @@ Dosen: Rizal Dwi Prayogo, S.Si., M.Si., M.Sc.
 Anggota Kelompok:
 1. Matthew Mahendra / 16521497
 2. Henry Anand Septian Radityo / 16521507
-3. Richard Haris / 16521...
+3. Richard Haris / 16521501
 4. Kenny Benaya Nathan / 16521527
 
 Deskripsi:  Program ATM-Sederhana dengan penyederhanaan yaitu hanya menggunakan 4 fungsi ATM yaitu transfer, tarik uang, cek saldo, 
