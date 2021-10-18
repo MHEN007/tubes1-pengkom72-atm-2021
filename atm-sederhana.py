@@ -66,6 +66,7 @@ elif(status_masuk == 'berhasil'):
                 menu += 1
             else:
                 print("Masukkan y/n")
+        return
 
     #Function transfer rekening starts here
     def transfer():
@@ -102,6 +103,8 @@ elif(status_masuk == 'berhasil'):
         
         #exit atm
         exit_sequence()
+
+        return
     #Fuction transfer rekening ends here
 
     #Function deposito starts here
@@ -117,6 +120,8 @@ elif(status_masuk == 'berhasil'):
 
         #exit transaksi
         exit_sequence()
+
+        return
     #Function cek saldo ends here
     
     #Function tarik uang starts here
@@ -153,6 +158,7 @@ elif(status_masuk == 'berhasil'):
             
         #exit transaksi tarik tunai
         exit_sequence()
+        return
     #Function tarik uang ends here
 
     #MENU ATM STARTS HERE
