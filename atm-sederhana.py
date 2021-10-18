@@ -160,7 +160,8 @@ elif(status_masuk == 'berhasil'):
                     PIN = int(input("Masukkan PIN Anda: "))
 
                 kartu[3] = kartu[3] - Nominal_Deposito # Saldo rekening yang tersisa sama dengan saldo rekening awal dikurangi nominal deposito
-                kartu[5] = Nominal_Deposito # Saldo rekening deposito sama dengan nominal deposito 
+                kartu[5] = Nominal_Deposito # Saldo rekening deposito sama dengan nominal deposito
+                kartu[4] = True 
                 
                 print("Pembukaan Rekening Deposito Berhasil!")
                 print("Informasi tentang deposito dapat dilihat pada menu Informasi Deposito.")
