@@ -13,8 +13,6 @@ Anggota Kelompok:
 
 Deskripsi:  Program ATM-Sederhana dengan penyederhanaan yaitu hanya menggunakan 4 fungsi ATM yaitu transfer, tarik uang, cek saldo, 
             dan deposito
-
-Kamus:
 '''
 
 #Keterangan kartu sudah di pre-define lewat array di bawah ini
@@ -137,35 +135,35 @@ elif(status_masuk == 'berhasil'):
                 if(kartu[3] < 1000000): # Jika saldo rekening anda tidak mencukupi ketentuan minimum deposito, maka anda tidak dapat membuka rekening deposito
                     print("Saldo rekening anda tidak cukup untuk membuka rekening deposito sesuai peraturan yang disebutkan.")
                     print("", end='') # kembali ke menu awal
-                
-                Nomor_Rekening = int(input("Silakan masukkan nomor rekening Anda: ")) # Masukkan nomor rekening anda sebagai verifikasi bahwa pengguna adalah anda sendiri
-                while(Nomor_Rekening != kartu[1]):  # ika nomor rekening yang dimasukkan tidak sesuai dengan nomor rekening pengguna, maka masukkan ulang nomor rekening hingga sesuai
-                    print("Nomor rekening yang Anda masukkan salah.")
-                    Nomor_Rekening = int(input("Silakan masukkan nomor rekening Anda: "))
-                
-                Nominal_Deposito = int(input("Nominal Deposito (IDR):Rp")) # Masukkan nominal deposito yang diinginkan
-                while(Nominal_Deposito < 1000000 or Nominal_Deposito > kartu[3]):  # Jika nominal deposito kurang dari syarat minimum dari peraturan bank yang disebutkan sebelumnya atau saldo rekening tidak mencukupi nominal yang diinginkan, masukkan nominal deposito hingga sesuai dengan ketentuan yang disebutkan
-                    print("Nominal deposito tidak memenuhi ketentuan nominal minimum deposito atau saldo rekening tidak mencukupi nominal yang diinginkan.")
-                    Nominal_Deposito = int(input("Nominal Deposito (IDR):Rp"))
-                
-                global Jangka_Waktu # Membuat variabel global agar dapat digunakan di menu 2, yaitu Informasi Deposito
-                Jangka_Waktu = int(input("Jangka Waktu (bulan): "))  # Masukkan jangka waktu deposito yang diinginkan
-                while(Jangka_Waktu != 1 and Jangka_Waktu != 3 and Jangka_Waktu != 6 and Jangka_Waktu != 9 and Jangka_Waktu != 12):  # Jika jangka waktu tidak sesuai dengan peraturan deposito, masukkan ulang hingga sesuai peraturan
-                    print("Tidak ada pilihan jangka waktu tersebut.")
-                    Jangka_Waktu = int(input("Jangka Waktu (bulan): "))
+                else:
+                    Nomor_Rekening = int(input("Silakan masukkan nomor rekening Anda: ")) # Masukkan nomor rekening anda sebagai verifikasi bahwa pengguna adalah anda sendiri
+                    while(Nomor_Rekening != kartu[1]):  # ika nomor rekening yang dimasukkan tidak sesuai dengan nomor rekening pengguna, maka masukkan ulang nomor rekening hingga sesuai
+                        print("Nomor rekening yang Anda masukkan salah.")
+                        Nomor_Rekening = int(input("Silakan masukkan nomor rekening Anda: "))
+                    
+                    Nominal_Deposito = int(input("Nominal Deposito (IDR):Rp")) # Masukkan nominal deposito yang diinginkan
+                    while(Nominal_Deposito < 1000000 or Nominal_Deposito > kartu[3]):  # Jika nominal deposito kurang dari syarat minimum dari peraturan bank yang disebutkan sebelumnya atau saldo rekening tidak mencukupi nominal yang diinginkan, masukkan nominal deposito hingga sesuai dengan ketentuan yang disebutkan
+                        print("Nominal deposito tidak memenuhi ketentuan nominal minimum deposito atau saldo rekening tidak mencukupi nominal yang diinginkan.")
+                        Nominal_Deposito = int(input("Nominal Deposito (IDR):Rp"))
+                    
+                    global Jangka_Waktu # Membuat variabel global agar dapat digunakan di menu 2, yaitu Informasi Deposito
+                    Jangka_Waktu = int(input("Jangka Waktu (bulan): "))  # Masukkan jangka waktu deposito yang diinginkan
+                    while(Jangka_Waktu != 1 and Jangka_Waktu != 3 and Jangka_Waktu != 6 and Jangka_Waktu != 9 and Jangka_Waktu != 12):  # Jika jangka waktu tidak sesuai dengan peraturan deposito, masukkan ulang hingga sesuai peraturan
+                        print("Tidak ada pilihan jangka waktu tersebut.")
+                        Jangka_Waktu = int(input("Jangka Waktu (bulan): "))
 
-                PIN = int(input("Masukkan PIN Anda: ")) # Masukkan PIN rekening anda
-                while(PIN != kartu[2]):  # Jika PIN rekening anda tidak sesuai dengan yang sebenarnya, masukkan ulang PIN hingga sesuai
-                    print("PIN yang dimasukkan salah.")
-                    PIN = int(input("Masukkan PIN Anda: "))
+                    PIN = int(input("Masukkan PIN Anda: ")) # Masukkan PIN rekening anda
+                    while(PIN != kartu[2]):  # Jika PIN rekening anda tidak sesuai dengan yang sebenarnya, masukkan ulang PIN hingga sesuai
+                        print("PIN yang dimasukkan salah.")
+                        PIN = int(input("Masukkan PIN Anda: "))
 
-                kartu[3] = kartu[3] - Nominal_Deposito # Saldo rekening yang tersisa sama dengan saldo rekening awal dikurangi nominal deposito
-                kartu[5] = Nominal_Deposito # Saldo rekening deposito sama dengan nominal deposito
-                kartu[4] = True 
-                
-                print("Pembukaan Rekening Deposito Berhasil!")
-                print("Informasi tentang deposito dapat dilihat pada menu Informasi Deposito.")
-                deposito() # kembali ke layar menu deposito
+                    kartu[3] = kartu[3] - Nominal_Deposito # Saldo rekening yang tersisa sama dengan saldo rekening awal dikurangi nominal deposito
+                    kartu[5] = Nominal_Deposito # Saldo rekening deposito sama dengan nominal deposito
+                    kartu[4] = True 
+                    
+                    print("Pembukaan Rekening Deposito Berhasil!")
+                    print("Informasi tentang deposito dapat dilihat pada menu Informasi Deposito.")
+                    deposito() # kembali ke layar menu deposito
             else: # Jika anda telah memiliki rekening deposito, maka tidak perlu membuka rekening deposito lagi
                 print("Anda sudah memiliki rekening deposito.")
                 deposito() # kembali ke layar menu deposito
@@ -204,6 +202,8 @@ elif(status_masuk == 'berhasil'):
 
         if(Menu == 4): # Menu untuk kembali ke menu ATM awal
             print("", end='') # kembali ke menu ATM awal
+    
+        return
     #Function deposito ends here
 
     #Function cek saldo starts here
