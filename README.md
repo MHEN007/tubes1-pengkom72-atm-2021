@@ -34,3 +34,6 @@ Tugas ini dibuat oleh
 
 ## Laporan Tugas Besar
 Lihat di link: <a href="https://docs.google.com/document/d/1zc51I_SnXpbllI5QSqYmd1TqFp6hEp8uFX7SpmolA-M/edit?usp=sharing">https://docs.google.com/document/d/1zc51I_SnXpbllI5QSqYmd1TqFp6hEp8uFX7SpmolA-M/edit?usp=sharing</a>
+
+## Tagihan Tugas Besar
+Lihat di link: <a href="https://cdn-edunex.itb.ac.id/31889-Introduction-to-Computation/53642-Tugas-Besar-Algoritma-Pemrograman/task/1633412883697_KU1102_AP_PRG_5_TugasBesarI.pdf">https://cdn-edunex.itb.ac.id/31889-Introduction-to-Computation/53642-Tugas-Besar-Algoritma-Pemrograman/task/1633412883697_KU1102_AP_PRG_5_TugasBesarI.pdf </a>
