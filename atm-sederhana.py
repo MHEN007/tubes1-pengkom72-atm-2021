@@ -202,7 +202,11 @@ elif(status_masuk == 'berhasil'):
 
         if(Menu == 4): # Menu untuk kembali ke menu ATM awal
             print("", end='') # kembali ke menu ATM awal
-    
+
+        if(Menu > 4 or Menu <1):
+            print("Masukkan angka 1-4")
+            deposito()
+            
         return
     #Function deposito ends here
 
