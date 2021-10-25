@@ -115,8 +115,8 @@ elif(status_masuk == 'berhasil'):
         # layar menu deposito
         print("1.Pembukaan Rekening Deposito")
         print("2.Informasi Deposito")
-        print("3.Pencairan Deposito")
-        print("4.Kembali")
+        #print("3.Pencairan Deposito")
+        print("3.Kembali")
         Menu = int(input("Pilih menu: "))
         if(Menu == 1): # Menu Pembukaan Rekening Deposito
             if(Punya_deposito == False):  # Jika belum punya deposito, maka harus buka rekening deposito dahulu
@@ -192,6 +192,7 @@ elif(status_masuk == 'berhasil'):
                 print("Silakan membuka rekening deposito terlebih dahulu.")
                 deposito() # kembali ke layar menu deposito
 
+        '''
         if(Menu == 3): # Menu pencairan dana deposito
             if(Punya_deposito == True): # Jika anda telah memiliki rekening deposito, pada saat yang bersamaan dengan periode pembukaan rekening deposito, anda tidak dapat mencairkan dana deposito anda sesuai peraturan yang ditetapkan
                 print("Berdasarkan peraturan, Anda tidak dapat mencairkan deposito pada saat yang sama dengan periode pembukaan rekening deposito Anda.")
@@ -199,12 +200,13 @@ elif(status_masuk == 'berhasil'):
             else: # Jika anda belum memiliki rekening deposito, maka buat rekening deposito terlebih dahulu
                 print("Silakan membuka rekening deposito terlebih dahulu.")
                 deposito() # kembali ke layar menu deposito
+        '''
 
-        if(Menu == 4): # Menu untuk kembali ke menu ATM awal
+        if(Menu == 3): # Menu untuk kembali ke menu ATM awal
             print("", end='') # kembali ke menu ATM awal
 
-        if(Menu > 4 or Menu <1):
-            print("Masukkan angka 1-4")
+        if(Menu > 3 or Menu <1):
+            print("Masukkan angka 1-3")
             deposito()
             
         return
