@@ -107,6 +107,8 @@ elif(status_masuk == 'berhasil'):
 
     #Function deposito starts here
     def deposito():
+        global Jangka_Waktu # Membuat variabel global agar dapat digunakan di menu 2, yaitu Informasi Deposito
+
         if(kartu[4] == False):  # Apakah pengguna memiliki rekening deposito?
             Punya_deposito = False  # Jika kartu[4] bernilai false, maka belum punya deposito
         else:
@@ -146,7 +148,6 @@ elif(status_masuk == 'berhasil'):
                         print("Nominal deposito tidak memenuhi ketentuan nominal minimum deposito atau saldo rekening tidak mencukupi nominal yang diinginkan.")
                         Nominal_Deposito = int(input("Nominal Deposito (IDR):Rp"))
                     
-                    global Jangka_Waktu # Membuat variabel global agar dapat digunakan di menu 2, yaitu Informasi Deposito
                     Jangka_Waktu = int(input("Jangka Waktu (bulan): "))  # Masukkan jangka waktu deposito yang diinginkan
                     while(Jangka_Waktu != 1 and Jangka_Waktu != 3 and Jangka_Waktu != 6 and Jangka_Waktu != 9 and Jangka_Waktu != 12):  # Jika jangka waktu tidak sesuai dengan peraturan deposito, masukkan ulang hingga sesuai peraturan
                         print("Tidak ada pilihan jangka waktu tersebut.")
