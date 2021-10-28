@@ -120,6 +120,10 @@ elif(status_masuk == 'berhasil'):
         #print("3.Pencairan Deposito")
         print("3.Kembali")
         Menu = int(input("Pilih menu: "))
+        if(Menu > 3 or Menu <1):
+            print("Masukkan angka 1-3")
+            deposito()
+            
         if(Menu == 1): # Menu Pembukaan Rekening Deposito
             if(Punya_deposito == False):  # Jika belum punya deposito, maka harus buka rekening deposito dahulu
                 print("Selamat Datang di Menu Pembukaan Rekening Deposito")
@@ -136,7 +140,6 @@ elif(status_masuk == 'berhasil'):
             
                 if(kartu[3] < 1000000): # Jika saldo rekening anda tidak mencukupi ketentuan minimum deposito, maka anda tidak dapat membuka rekening deposito
                     print("Saldo rekening anda tidak cukup untuk membuka rekening deposito sesuai peraturan yang disebutkan.")
-                    print("", end='') # kembali ke menu awal
                 else:
                     Nomor_Rekening = int(input("Silakan masukkan nomor rekening Anda: ")) # Masukkan nomor rekening anda sebagai verifikasi bahwa pengguna adalah anda sendiri
                     while(Nomor_Rekening != kartu[1]):  # ika nomor rekening yang dimasukkan tidak sesuai dengan nomor rekening pengguna, maka masukkan ulang nomor rekening hingga sesuai
@@ -205,10 +208,6 @@ elif(status_masuk == 'berhasil'):
 
         if(Menu == 3): # Menu untuk kembali ke menu ATM awal
             print("", end='') # kembali ke menu ATM awal
-
-        if(Menu > 3 or Menu <1):
-            print("Masukkan angka 1-3")
-            deposito()
             
         return
     #Function deposito ends here
