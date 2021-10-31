@@ -141,7 +141,7 @@ elif(status_masuk == 'berhasil'):
                         print("Saldo rekening anda tidak cukup untuk membuka rekening deposito sesuai peraturan yang disebutkan.")
                         loop=False # keluar dari menu deposito dan kembali ke menu utama
                     else:
-                        Nomor_Rekening = int(input("Silakan masukkan nomor rekening Anda: ")) # Masukkan nomor rekening anda sebagai verifikasi bahwa pengguna adalah anda sendiri
+                        Nomor_Rekening = int(input("Silakan masukkan nomor rekening Anda: ")) # Masukkan nomor rekening
                         while(Nomor_Rekening != kartu[1]):  # jika nomor rekening yang dimasukkan tidak sesuai dengan nomor rekening pengguna, maka masukkan ulang nomor rekening hingga sesuai
                             print("Nomor rekening yang Anda masukkan salah.")
                             Nomor_Rekening = int(input("Silakan masukkan nomor rekening Anda: "))
